@@ -29,5 +29,21 @@ export class LambdaStack extends Stack {
         'dynamodb:Scan'
       ]
     }))
+
+    const createHouse = new NodejsFunction(this, 'CreateHouse', {
+      runtime: Runtime.NODEJS_22_X,
+      handler: 'handler',
+      entry: (join(__dirname, '..','..', 'services', 'lambdas', 'houses', 'create.ts')),
+      environment: {
+        TABLE_NAME: props.housesTable.tableName
+      },
+    })
+
+    createHouse.addToRolePolicy(new PolicyStatement({
+      resources: [props.housesTable.tableArn],
+      actions: [
+        'dynamodb:PutItem'
+      ]
+    }))
   }
 }
