@@ -4,7 +4,7 @@ import { UserPool, UserPoolClient } from 'aws-cdk-lib/aws-cognito';
 
 export class AuthStack extends Stack {
   public userPool: UserPool
-  private userPoolClient: UserPoolClient
+  public userPoolClient: UserPoolClient
 
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)

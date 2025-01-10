@@ -5,6 +5,7 @@ import { Construct } from "constructs";
 interface ApiStackProps extends StackProps {
   getAllHousesLambdaIntegration: LambdaIntegration
   createHouseLambdaIntegration: LambdaIntegration
+  loginIntegration: LambdaIntegration
 }
 
 export class ApiStack extends Stack {
@@ -23,5 +24,8 @@ export class ApiStack extends Stack {
     const housesResource = api.root.addResource('houses', optionsWithCors)
     housesResource.addMethod('GET', props.getAllHousesLambdaIntegration)
     housesResource.addMethod('POST', props.createHouseLambdaIntegration)
+    
+    const loginResource = api.root.addResource('login', optionsWithCors)
+    loginResource.addMethod('POST', props.loginIntegration)
   }
 }

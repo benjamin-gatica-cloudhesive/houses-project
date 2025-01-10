@@ -5,12 +5,19 @@ import { ApiStack } from "./stacks/ApiStack";
 import { AuthStack } from "./stacks/AuthStack";
 
 const app = new App()
+
 const dataStack = new DataStack(app, 'HousesDataStack')
+
+const authStack = new AuthStack(app, 'HousesAuthStack')
+
 const lambdaStack = new LambdaStack(app, 'HousesLambdaStack', {
-  housesTable: dataStack.housesTable
+  housesTable: dataStack.housesTable,
+  userPoolClientId: authStack.userPool.userPoolId,
+  userPoolId: authStack.userPoolClient.userPoolClientId
 })
+
 new ApiStack(app, 'HousesApiStack', {
   createHouseLambdaIntegration: lambdaStack.createHouseLambdaIntegration,
-  getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration
+  getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration,
+  loginIntegration: lambdaStack.loginIntegration
 })
-new AuthStack(app, 'HousesAuthStack')

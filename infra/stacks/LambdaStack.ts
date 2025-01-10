@@ -8,12 +8,15 @@ import { Construct } from "constructs";
 import { join } from "path";
 
 interface LambdaStackProps extends StackProps {
-  housesTable: ITable
+  housesTable: ITable,
+  userPoolId: string,
+  userPoolClientId: string
 }
 
 export class LambdaStack extends Stack {
   public readonly getAllHousesLambdaIntegration: LambdaIntegration
   public readonly createHouseLambdaIntegration: LambdaIntegration
+  public readonly loginIntegration: LambdaIntegration
 
   constructor(scope: Construct, id: string, props: LambdaStackProps) {
     super(scope, id, props)
@@ -53,5 +56,17 @@ export class LambdaStack extends Stack {
     }))
 
     this.createHouseLambdaIntegration = new LambdaIntegration(createHouse)
+
+    const login = new NodejsFunction(this, 'Login', {
+      runtime: Runtime.NODEJS_22_X,
+      handler: 'handler',
+      entry: (join(__dirname, '..','..', 'services', 'lambdas', 'auth', 'handler.ts')),
+      environment: {
+        USER_POOL_ID: props.userPoolId,
+        USER_POOL_CLIENT_ID: props.userPoolClientId
+      },
+    })
+
+    this.loginIntegration = new LambdaIntegration(login)
   }
 }
