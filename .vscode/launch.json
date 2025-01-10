@@ -18,8 +18,7 @@
       "env": {
         "AWS_REGION": "us-east-1",
         "TABLE_NAME": "HousesTable-121f62cb17a7",
-        "USER_POOL_ID": "us-east-1_u0a9yNjVG",
-        "USER_POOL_CLIENT_ID": "1ndd6q2depj2ck53380nhconff"
+        "USER_POOL_CLIENT_ID": "18ng9u43ge0kb4rnkighjreatd"
       }
     }
   ]

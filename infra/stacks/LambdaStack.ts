@@ -62,10 +62,18 @@ export class LambdaStack extends Stack {
       handler: 'handler',
       entry: (join(__dirname, '..','..', 'services', 'lambdas', 'auth', 'handler.ts')),
       environment: {
-        USER_POOL_ID: props.userPoolId,
         USER_POOL_CLIENT_ID: props.userPoolClientId
       },
     })
+
+    login.addToRolePolicy(new PolicyStatement({
+      actions: [
+        'cognito-idp:AdminInitiateAuth'
+      ],
+      resources: [
+        `arn:aws:cognito-idp:${this.region}:${this.account}:userpool/${props.userPoolId}`
+      ],
+    }));
 
     this.loginIntegration = new LambdaIntegration(login)
   }

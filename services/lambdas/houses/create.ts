@@ -1,13 +1,13 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
-import { createRandomId, formattedResponse, getItemFromEvent } from '../../utils/utils'
+import { createRandomId, formattedResponse, getBodyFromEvent } from '../../utils/utils'
 import { createItem } from '../../db/operations'
 
 const ddbClient = new DynamoDBClient()
 
 async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   try {
-    const house = getItemFromEvent(event)
+    const house = getBodyFromEvent(event)
     const houseId = createRandomId()
     house.id = houseId
 

@@ -1,4 +1,4 @@
-@url = https://3fz1f03fdi.execute-api.us-east-1.amazonaws.com/prod/
+@url = https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/
 
 GET {{url}}houses HTTP/1.1
 

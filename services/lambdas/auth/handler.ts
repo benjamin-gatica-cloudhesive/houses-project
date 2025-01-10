@@ -1,16 +1,25 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
-import { formattedResponse, getItemFromEvent, validateStructureLoginCredentials } from '../../utils/utils'
-import { AuthService } from './AuthService'
+import { formattedResponse, getCognitoClient, getBodyFromEvent, getToken, logIn, validateStructureLoginCredentials } from "../../utils/utils";
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   try {
-    const credentials = getItemFromEvent(event)
+    const credentials = getBodyFromEvent(event)
 
     validateStructureLoginCredentials(credentials)
 
     const { userName, password } = credentials
 
-    return formattedResponse(200, { userName })
+    const cognitoClient = getCognitoClient()
+
+    const logInResponse = await logIn({
+      userName,
+      password,
+      cognitoClient
+    })
+
+    const token = getToken(logInResponse)
+
+    return formattedResponse(200, { token })
   } catch (error) {
     if (error instanceof Error) {
       return formattedResponse(500, error.message)
