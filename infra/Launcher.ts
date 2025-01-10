@@ -12,8 +12,8 @@ const authStack = new AuthStack(app, 'HousesAuthStack')
 
 const lambdaStack = new LambdaStack(app, 'HousesLambdaStack', {
   housesTable: dataStack.housesTable,
-  userPoolClientId: authStack.userPool.userPoolId,
-  userPoolId: authStack.userPoolClient.userPoolClientId
+  userPoolClientId: authStack.userPoolClient.userPoolClientId,
+  userPoolId: authStack.userPool.userPoolId
 })
 
 new ApiStack(app, 'HousesApiStack', {
