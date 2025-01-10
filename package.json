@@ -25,7 +25,6 @@
     "@aws-amplify/auth": "^6.9.1",
     "@aws-sdk/client-dynamodb": "^3.724.0",
     "@aws-sdk/util-dynamodb": "^3.724.0",
-    "@smithy/util-utf8": "^4.0.0",
     "aws-amplify": "^6.12.0",
     "aws-cdk-lib": "2.174.1",
     "constructs": "^10.0.0",
