@@ -1,10 +1,29 @@
-import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb"
-import { unmarshall } from "@aws-sdk/util-dynamodb"
+import { DynamoDBClient, PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb"
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
 
-export const getItems = async (ddbClient: DynamoDBClient) => {
+interface DBOperationsArgs {
+  ddbClient: DynamoDBClient
+}
+
+interface createItemArgs extends DBOperationsArgs {
+  item: any
+}
+
+export const getItems = async (args: DBOperationsArgs) => {
+  const { ddbClient } = args
+
   const result = await ddbClient.send(new ScanCommand({
     TableName: process.env.TABLE_NAME
   }))
 
   return result.Items?.map(item => unmarshall(item))
+}
+
+export const createItem = async (args: createItemArgs) => {
+  const { ddbClient, item } = args
+
+  return ddbClient.send(new PutItemCommand({
+    TableName: process.env.TABLE_NAME,
+    Item: marshall(item)
+  }))
 }
