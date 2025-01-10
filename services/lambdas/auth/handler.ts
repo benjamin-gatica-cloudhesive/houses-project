@@ -1,4 +1,5 @@
-import { formattedResponse, getCognitoClient, getBodyFromEvent, getToken, logIn, validateStructureLoginCredentials } from "../../utils/utils";
+import { getToken, logIn } from "../../utils/cognitoUtils";
+import { formattedResponse, getBodyFromEvent, validateStructureLoginCredentials } from "../../utils/utils";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
@@ -9,13 +10,7 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 
     const { userName, password } = credentials
 
-    const cognitoClient = getCognitoClient()
-
-    const logInResponse = await logIn({
-      userName,
-      password,
-      cognitoClient
-    })
+    const logInResponse = await logIn({ userName, password })
 
     const token = getToken(logInResponse)
 
@@ -25,7 +20,7 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
       return formattedResponse(500, error.message)
     }
 
-    return formattedResponse(500, 'Error trying to retrieve houses')
+    return formattedResponse(500, 'Error trying to make logIn')
   }
 }
 
