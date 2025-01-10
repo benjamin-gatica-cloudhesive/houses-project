@@ -19,5 +19,6 @@ const lambdaStack = new LambdaStack(app, 'HousesLambdaStack', {
 new ApiStack(app, 'HousesApiStack', {
   createHouseLambdaIntegration: lambdaStack.createHouseLambdaIntegration,
   getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration,
-  loginIntegration: lambdaStack.loginIntegration
+  loginIntegration: lambdaStack.loginIntegration,
+  userPool: authStack.userPool
 })

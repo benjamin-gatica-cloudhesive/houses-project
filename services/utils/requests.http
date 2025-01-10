@@ -1,16 +1,5 @@
 @url = https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/
-
-GET {{url}}houses HTTP/1.1
-
-###
-POST {{url}}houses HTTP/1.1
-Content-Type: application/json
-
-{
-  "city": "talca",
-  "address": "avenida apoquindo",
-  "country": "chile"
-}
+@token = eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiIwNTFlOGYwOS0xODA1LTQxMmItYWU2MC03MGViN2VhYmFmZGYiLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiZWUxNGI1ZDMtZGUzYS00MmNiLWIyZmItODNlMjM4YWM5ODQ4IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY1MzYzMDcsImV4cCI6MTczNjUzOTkwNywiaWF0IjoxNzM2NTM2MzA3LCJqdGkiOiJmMjMwMGViYy0zN2YyLTRmMzAtYmVjNS1iYzI3MWViNjQ1OWUiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.tRPh4FjbLZfQgM_RyQNzV7Rwcgzavo8Q4BpLzJ1MCGHjsAQEuIcCiVEi_bIDkhPq9f7Pf9GcbKodTxA0mKbHt-KvbnKwf2GpM7isKEOjtFf01oLrD6SatONLMjaOJu_2sywiwb1-wiZd0InU6hjxcmhXOf6EcQVOFpO5nFnHceM_bleR50K3hs9HWuKb6KyksPjGpCDZCcYLarcfuI8ZKUYnvFECIC7A1Dem5vyLLcim0wTaw29Iu6e_oR8DwdcAwNCozbDHnsDeiPXGVLx9gP6ays1LXtB1nhCcPi3qIPzmwILCP3aHsUWFWlnvaKHmQjInS19xP_aGtpyPBUD71w
 
 ###
 POST {{url}}login HTTP/1.1
@@ -19,4 +8,17 @@ Content-Type: application/json
 {
   "userName": "pedrito",
   "password": "Qwerty1234."
+}
+###
+GET {{url}}houses HTTP/1.1
+Authorization: {{token}}
+###
+POST {{url}}houses HTTP/1.1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "city": "iquique",
+  "address": "avenida del mar",
+  "country": "chile"
 }
