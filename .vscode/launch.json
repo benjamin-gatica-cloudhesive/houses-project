@@ -17,7 +17,7 @@
       ],
       "env": {
         "AWS_REGION": "us-east-1",
-        "TABLE_NAME": "HousesTable-121f62cb17a7",
+        "TABLE_NAME": "HousesTable-0ee49a7cd55d",
         "USER_POOL_CLIENT_ID": "18ng9u43ge0kb4rnkighjreatd"
       }
     }

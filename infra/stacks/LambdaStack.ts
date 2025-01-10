@@ -16,6 +16,7 @@ interface LambdaStackProps extends StackProps {
 export class LambdaStack extends Stack {
   public readonly getAllHousesLambdaIntegration: LambdaIntegration
   public readonly createHouseLambdaIntegration: LambdaIntegration
+  public readonly deleteHouseLambdaIntegration: LambdaIntegration
   public readonly loginIntegration: LambdaIntegration
 
   constructor(scope: Construct, id: string, props: LambdaStackProps) {
@@ -56,6 +57,24 @@ export class LambdaStack extends Stack {
     }))
 
     this.createHouseLambdaIntegration = new LambdaIntegration(createHouse)
+
+    const deleteHouse = new NodejsFunction(this, 'DeleteHouse', {
+      runtime: Runtime.NODEJS_22_X,
+      handler: 'handler',
+      entry: (join(__dirname, '..','..', 'services', 'lambdas', 'houses', 'delete.ts')),
+      environment: {
+        TABLE_NAME: props.housesTable.tableName
+      },
+    })
+
+    deleteHouse.addToRolePolicy(new PolicyStatement({
+      resources: [props.housesTable.tableArn],
+      actions: [
+        'dynamodb:DeleteItem'
+      ]
+    }))
+
+    this.deleteHouseLambdaIntegration = new LambdaIntegration(deleteHouse)
 
     const login = new NodejsFunction(this, 'Login', {
       runtime: Runtime.NODEJS_22_X,

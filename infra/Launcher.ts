@@ -19,6 +19,7 @@ const lambdaStack = new LambdaStack(app, 'HousesLambdaStack', {
 new ApiStack(app, 'HousesApiStack', {
   createHouseLambdaIntegration: lambdaStack.createHouseLambdaIntegration,
   getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration,
+  deleteHouseLambdaIntegration: lambdaStack.deleteHouseLambdaIntegration,
   loginIntegration: lambdaStack.loginIntegration,
   userPool: authStack.userPool
 })

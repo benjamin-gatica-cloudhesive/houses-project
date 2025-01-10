@@ -45,3 +45,19 @@ export const validateStructureLoginCredentials = (credentials: any) => {
     throw new Error('password must be type string')
   }
 }
+
+export const isIdInParameters = (event: APIGatewayProxyEvent) => {
+  if (!event.queryStringParameters) {
+    return false
+  }
+
+  if (!event.queryStringParameters?.id) {
+    return false
+  }
+
+  return true
+}
+
+export const getIdFromParameters = (event: APIGatewayProxyEvent) => {
+  return event.queryStringParameters?.id
+}
