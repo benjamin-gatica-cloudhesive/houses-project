@@ -28,7 +28,7 @@ Authorization: {{token}}
 }
 
 ###
-DELETE {{url}}houses/9d81118c-a3c9-477f-bf96-cfca1bfdab4d HTTP/1.1
+DELETE {{url}}houses/c15e0cc6-c830-43b3-b95c-615337f8f83e HTTP/1.1
 Authorization: {{token}}
 
 ###
