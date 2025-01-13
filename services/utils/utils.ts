@@ -1,11 +1,24 @@
 import { APIGatewayProxyEvent } from "aws-lambda"
 import { v4 } from "uuid"
 
-export const formattedResponse = (statusCode: number, body: any) => {
+interface ResponseBody {
+  message: string,
+  info?: any
+}
+
+export const formattedResponse = (statusCode: number, body: ResponseBody) => {
   return {
     statusCode,
     body: JSON.stringify(body)
   }
+}
+
+export const errorResponse = (error: any, defaultMessage: string) => {
+  if (error instanceof Error) {
+    return formattedResponse(500, { message: error.message })
+  }
+
+  return formattedResponse(500, { message: defaultMessage })
 }
 
 export const getBodyFromEvent = (event: APIGatewayProxyEvent) => {

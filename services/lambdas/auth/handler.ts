@@ -1,5 +1,5 @@
 import { getToken, logIn } from "../../utils/cognitoUtils";
-import { formattedResponse, getBodyFromEvent, validateStructureLoginCredentials } from "../../utils/utils";
+import { errorResponse, formattedResponse, getBodyFromEvent, validateStructureLoginCredentials } from "../../utils/utils";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
@@ -14,13 +14,12 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 
     const token = getToken(logInResponse)
 
-    return formattedResponse(200, token)
+    return formattedResponse(200, {
+      message: 'Token obtained successfully',
+      info: token
+    })
   } catch (error) {
-    if (error instanceof Error) {
-      return formattedResponse(500, error.message)
-    }
-
-    return formattedResponse(500, 'Error trying to make logIn')
+    return errorResponse(error, 'Error trying to make logIn')
   }
 }
 

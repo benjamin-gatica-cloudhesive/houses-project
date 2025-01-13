@@ -5,7 +5,7 @@ import { handler as updateHouse } from "../lambdas/houses/update";
 import { handler as getHouseById } from "../lambdas/houses/get";
 import { handler as login } from "../lambdas/auth/handler";
 
-// getAll({} as any)
+getAll({} as any)
 
 // createProduct({
 //   body: JSON.stringify({
@@ -15,12 +15,12 @@ import { handler as login } from "../lambdas/auth/handler";
 //   })
 // } as any)
 
-login({
-  body: JSON.stringify({
-    userName: 'pedrito',
-    password: 'Qwerty1234.'
-  })
-} as any)
+// login({
+//   body: JSON.stringify({
+//     userName: 'pedrito',
+//     password: 'Qwerty1234.'
+//   })
+// } as any)
 
 // deleteHouse({
 //   queryStringParameters: {

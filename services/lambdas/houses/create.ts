@@ -1,6 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
-import { createRandomId, formattedResponse, getBodyFromEvent } from '../../utils/utils'
+import { createRandomId, errorResponse, formattedResponse, getBodyFromEvent } from '../../utils/utils'
 import { createItem } from '../../db/operations'
 
 const ddbClient = new DynamoDBClient()
@@ -16,13 +16,14 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
       item: house
     })
 
-    return formattedResponse(201, house)
+    return formattedResponse(201, {
+      message: 'House created successfully',
+      info: {
+        house
+      }
+    })
   } catch (error) {
-    if (error instanceof Error) {
-      return formattedResponse(500, error.message)
-    }
-
-    return formattedResponse(500, 'Error trying to store house')
+    return errorResponse(error, 'Error trying to store house')
   }
 }
 

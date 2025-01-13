@@ -22,7 +22,16 @@ curl -X POST "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/login"
 Response:
 
 ```bash
-{"AccessToken":"eyJraWQiOiJ6NTZoaE5LM2pLUTE5c0FGd0lnaGk4a1hyN2NcLzE5aE5ZUjdvUUxMNFp3WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjbGllbnRfaWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsIm9yaWdpbl9qdGkiOiJhYjBlZTkxOS1hN2M0LTRmYmEtOGViNC1hZTFlY2Q1ZmZlODciLCJldmVudF9pZCI6IjNiMmEwMDczLWQ4MmUtNDU5Ni1iN2Q3LWNmYzBhNGI1MjlkOCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MzY3ODI4MTIsImV4cCI6MTczNjc4NjQxMiwiaWF0IjoxNzM2NzgyODEyLCJqdGkiOiJkNjllYTA0Mi0yYTc5LTRhZjMtOTg4NC1mZGJkZjNhMjZmOTEiLCJ1c2VybmFtZSI6InBlZHJpdG8ifQ.G6R8Nu_JcOvY2pxJRUzXh39g9ooM-fsPtjLlC3HWhP2l2INUCOZAAej_le_IxdBkI1vXRRH50NDzig3-VekDn3myUs5kx-EWFthu_U4jxAH0eE9TKeRQpn9FeI5lbo5dvhXLvtykShbaz13Z-vW4KJ8gzFq7Tg7QGeEe7KkXNEAVOaK5lP1K_UgO6Nypvjz9ma_f9bxej0HqAMm1Ng7uQaMX7Ahvt7TAuDLbL2wWOnWjXj9hFmayMaJ3340VwOVvDeO3gHsL6Tvui2SCPJFhY3in8kjC_JUfjwuqLKVa23Ydfj-4-XI3ufKuu2XlRY5WDWhKg2igetKzQGkLRYf2lg","ExpiresIn":3600,"IdToken":"eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJhYjBlZTkxOS1hN2M0LTRmYmEtOGViNC1hZTFlY2Q1ZmZlODciLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiM2IyYTAwNzMtZDgyZS00NTk2LWI3ZDctY2ZjMGE0YjUyOWQ4IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODI4MTIsImV4cCI6MTczNjc4NjQxMiwiaWF0IjoxNzM2NzgyODEyLCJqdGkiOiJlNWM1NjBjMy1hNzI3LTQ1MGYtOGU2Ni1jYjg4YTFkMWZlMmEiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.oAvBUyGiCCVFPf-A18O2PFMB3e3bx-d-pU3AjxpwFllE7k6hM5BqQFW6IJ1MdDz50MOpwJoVKqtbkh53BvvAnK9cZlL2TolgL-Xt__Y-Au30lCYXAEQqgv29cf885iECsXr4To2rfdoN0WmaOKyVzff4n3qEHB9PHZxcO6EwAPxA7_qHWgcpr5xBYDx4TFXuWElF0wGlxgTV-kohaBIsfBQ-hdHwJkKN65lqXFzT6CvcEjFhR9GfsysjZ75lbEIbA5wAeqXQckGsarGCRoMwfIlVtUgGMpT1YBxknPnp-DPgjo7R52LIPrvxtiTekFbnNIihGuEj0efpD1RVIoXYqQ","RefreshToken":"eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.S3UlPKxscBbsxRkMR8yOkduB-dlXkRHqExEu-P2LvScH8A22akB5y3Z6zg9y9QEaFKh_l6uOFdFArWE2D7J2UdnNcrXb9TpK-lygYsMrFyZgYiFlgXpKo1iyGmtA2fz77Ch8sCJxhjziY5bpDe-xIDuaMM2eyHKm-0_iACwtfzppGrYAKPXmLK0k_iQzjmbOvz1uKiUmc6KHoJYJlKfWsF86UAitM28XMhzs2L2Rrjfvqp5vCvYbOG_7MEQzjek057nicvmy6KxqUDvIwaLfgZxDeh20_YzYOjhVO2OXJr8vPbUoJbWYNAQuSmaVXlOjBte11rG_D7pJuWJ6bsYyxw.0IGfS7JrZiy0f2oh.f8keABtq1hihfYyBo5ZqZF5GriZK5KI1oqx_pLpFzSAdAd4SjXGIwkR95bsLSZIbKhTaFHoAW3xTM26_R3JAenEzSuFbzHpYNu-amapCjr3NtzPwCJR78RBw7M_Ir42K1TVZCJ8Hxgq_6djNyaEw853lvPdLDtByF_E6fD6QGehvRVwVx0PmjQMCs6KkgNx1Y_iZ_0P8r38_B1rBdZtLMWmaf6cnx3M67in_-i718XeB8ZNx7FFKYbA7M8mNAFFLknzb1Yw4ZkhEBqvjZVpI4vVxY8DLZ6KApV6SmD75-J9BXPAIYPCP2pE-gtqdN0_HEhE6ubEACHjY7Awgfcy0FbpdnZXeUapbxBeVwhEraaOH5B5cwG2AElA-mln_F5J7JmK17p_ylmbjDReM9YbaHPHCBB1EVnhqsjlK15-Hzd_S6EiDug4-S1veqtHzq3fbLueushDrXFo0a02EjZdqSznAgZ1o7u5KEPEag_fGiNYLWhEUTG7F1o33yurA2ufw6pjby7mrzOpRYsCFkAMoXxFgMQsihcAhMKe9plfqe7--p-NC-iwx0NFRc2w1hYlrErq3fCig8mI3g9pJafv1uH7U1UR2t1vr0aAtRCx9LjvDpD53KjH1iFCGM94scjSxKv6s3Aw36_hhK5oGzOfvpKOfjwUJPU6ejgmzkb4ldjz-SZxhl_g6x5yhjzcK-mJttLn6IA2SxvJfuwI1eRT_1yLpUg6xkEx4k3mQvjBljssqerQg72KYDK9n5IARp7noWqFlNM24MNRSAR2APlgzpSL48BT5ToYqKY4lfhrW7bqCXVZvyf986LfFN-eZVy8HJtciMj_HZaDOk_6kIsdt0pKJyDSrZLDyrM5vXO5tD7VWQeSra__iInsHL54oiXzAJC8AyORDjyioQIIL3BXvZQZkjT5aacYwmPRJacESkYC3oUsWidKc8eVwdTr05lrPa6RepGVy7h1HJvXiv01-6tPNPgOSh6caEzbRj8-GACL-3AtfOC8FvQ4ge_tf8zfW3PibSCiWcavMQgQXWA-XEz_mdEP9AcoWobgRRYyNFNVFe45UcQxqWLGcGZjnMJUnYr67iweR3W7O3G2cptyDJhDinfIjNDq9-UzzxAP324qcZTUKGJ_5flD3RbUIoQYhQ3p4piusP0rdqaTPIiRFPjjccyVa48jc1E-ylaz8RRrnPbB2UOJOdH58EMRmAYtTgYtyKwEB4SolBLRpxymJkPVY2tl-Lewk7-tsRZeqkoNaN3N8FcdFV0mIsHk8SPowZCr2m8Dt.Lr9bA4VP6xUiMcVZGqe9Nw","TokenType":"Bearer"}
+{
+  "message": "Token obtained successfully",
+  "info": {
+    "AccessToken": "eyJraWQiOiJ6NTZoaE5LM2pLUTE5c0FGd0lnaGk4a1hyN2NcLzE5aE5ZUjdvUUxMNFp3WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjbGllbnRfaWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsIm9yaWdpbl9qdGkiOiJkYWI3OGExYi1kM2MwLTQzMjctYjJkNy1jZjY3ZTU3ZDFkYzEiLCJldmVudF9pZCI6ImIzMTNiNDI1LWI3ZmUtNDA2Yi04NmRlLTkxYWE4YzYyZGU2NiIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MzY3ODc3MTIsImV4cCI6MTczNjc5MTMxMiwiaWF0IjoxNzM2Nzg3NzEyLCJqdGkiOiIwNjBmYTg4OC0yNGNhLTRmOTAtYjJmYy00NmQyNzg5YmNhYjgiLCJ1c2VybmFtZSI6InBlZHJpdG8ifQ.R-bhKK4iwL2KdqZjQsHHrhxZiPoIDu__sMRr1iZl4c5ixYCSHuILPUU0HmbBEb9-ZNGpp8AIYvKY9C3TSbWQoxSNiY2eX-RNBGtKQen-l3fe7HC2zxjvyjTN751o0ywXU2dkwNE8MOVAWNzCd83CC206Lss07c9KH3sxlPg0Bwln2keIlBV1LYNPH1lOXPOSn4LwlglJqQ5EVTwrqB1A5Cu8E0UNzaAjs7IwRcdg1AjOT9cYmPmpTNvebuossEUpGtIpcSaJLEm-EGvP4uESwbp1V6uTz0DKxfJdIdRgbMccusfigLJe2ErZn0pNaW1XXMWafz1zT5gpa2yuQE8C7w",
+    "ExpiresIn": 3600,
+    "IdToken": "eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJkYWI3OGExYi1kM2MwLTQzMjctYjJkNy1jZjY3ZTU3ZDFkYzEiLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiYjMxM2I0MjUtYjdmZS00MDZiLTg2ZGUtOTFhYThjNjJkZTY2IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODc3MTIsImV4cCI6MTczNjc5MTMxMiwiaWF0IjoxNzM2Nzg3NzEyLCJqdGkiOiJmOTlmNTk0OC05M2Y0LTRlZTgtYmEzYS03ZDlhNzJkNGFkNTciLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.cRG4U4su2czagVLawkvRLw5EDRIedvjXwaA6kKnSSy20KQMgPfhaXgsNAHQVkmBnNym9AXBNVlmMjLb9AIN7RjJRkerPUZjzhe7Ub73816Zf6kMD52C39Y9rwonvn6TQ1N9A2DTvlTk-raIc44SDkeQyTOKwMZ6O9KJZ7Jp51RsspFsUIODY0qQBhHY0rD9ipBkedIiyXnyoMRRlP8nBupmxQbpqgoipgRXRK7N7C9bp6W5oIrGhk4N4PtXbOiKwSAxhERWZsUI6LwCFNEgevS5fwetYOywbr9AybOGNgAGFDgfA7OkyKPjcTjr4L6OL_-kBiWX-sEyzn5j0G4JdjQ",
+    "RefreshToken": "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.VCNeWeTnEzClUW2BOsQDOvgsl5YgItjCw_Xh4ij7aE7UXfByOOW-B0lVfqOsV3qEpVfmg_RyQaWdLNTXYfy1rnmEoR97njsazqBfx-5eOuSHd0l808BgVQE3-RL7MfnSVY9LX4Ds9QLePMu8iQzjARFQYieY90SctVU4T3UwOpZkLPU3c5kYpRK0Q5XRyfYId2imeOu3pQGj5vRGw3A3XyjN5gSdOIpfRZo7LxoxTPVQ0-x_q9n1H5BWGwh_dnIH81Y9QlzDLt2L8tpD_gH9UG3v5Dr6npj9-zvw-m3rWLfbrWJFikInw8ktkWp6oNV9ibmtaJOGmuaqLTCOxoa0zQ.S_XCaDRvO72RRft5.QFTRxjuWUWnroDZQW6hWFPLsC7Q_892oZTB_lkY8hhK53tMRRqOH3RZkd_ZtcUyCsu4vgSO8o2wFGjfq-J7RyKbNIdsYBKb8G7f3qk9EpwQR-ugUnHO0dziKPphM7rtiNFgzjIgOAQfSmf6c4sP50hbrGDCvIcOR68bL634KmFMJb3OSf5auv_hpAq-neXuAH-v82HN3g4SHG4fNGII1w7UjvJCkpz5y_Su6Q4nU-LvZptB7Qb9NBnYcN6zzjOtyLL769RIWbvETna6CEs6y_2HSmoK8qq77aik8oyYI0xqLxRgy-FEoXqI5Pqv3UUe9fHdZSaNgKpBLjKPUb1SjBG9CEjNAL5y4eHlHQ6H3h_tYWOzO4cSXeF4V_2Tj2B5mldWEAVqH0cHyHRrYf_5XNwCahTHkgZLxMZ4twxQyhnhRBUYE-FXVTe8P9v39DLUxiW3dwvOvw854wQaRTN8-N0eKzGTcEYtz2g62OlZC15PlMPdbo5CcMBHSbei2hCkCY0XZ2FBkkBU7hiisUmAlmJDiU1RNGXLTu6yTAfdK0zRK5Ywnplzlzwkb_J8dNze3Y-5MBbo_H-fkJzvcxfDqxgcm03DpF0rTi98RybTkjwLZYm7sw6xjY1oI8KKYWiLafk_VXk4BdEZcBCGzgLhUFnM3AElf49iJ5Tah8fFDAeo2FX1GsKfUj3KZtKi3jvb4MV_W_24uqF51UMtAYNBmks9QfOKSb-bL61OcBR-VeyLDg7O6_bVZrc7EdBLOZGAlcyzF0e34ugS25VTGQCb3P0RtgZKZgiTyQUUnvs957-Els3G211v9VTDIBbZ4m3yJrUE8kJaUpw2x_6TdlGtz5Mw2DIWk7a1ecedXSz-il6TGcc60JyRKQoeWwbg0Bk5b2y6hiimc_bxg1kg4uxW3SfR0tJ-BIX6ym2dxVKcKaKvUJAGP53q2kkyhxU1vJE_wg8u1glHbftnN6jU5Nejt95Crz9odR3iOZnNWQpK2SLvf-GnIcOZtycksPLy4XuyiP8pUBRuukB0MDEM8dnHlzlj_EZBiBs83ITr3zEL_-hYer3IFQf316BBbxZSlyj0Y8ookDt0KypYKk8HrBhK9p6AtVv2QuEkgoAdlWaY1VH9-sgT3kvuxY9nEDIIdPRGeulx5MeLMucbzf6ZppyCgsp94EgmXJfbj0n_6ba0kvnhxDf7AO7CqZ7q03T7HeL0o2kd7t37Aji__StrRGwwSMek-PbpS4Hid3VKaIFpZOoqAVc7Mv55FOMfDBhiawkcTn_35vwtU.DM8HrQi95ywhqGVg97Bk8Q",
+    "TokenType": "Bearer"
+  }
+}
 ```
 
 ### Houses
@@ -37,7 +46,29 @@ curl -X GET "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/houses"
 ```
 Response:
 ```bash
-[{"city":"talca","address":"avenida apoquindo","id":"7c2a0d14-71fa-4ae6-bc25-3476add30a30","country":"chile"},{"city":"iquique","address":"avenida del mar","id":"93fa388f-8e64-4baf-8c21-8bae31c75e5f","country":"chile"},{"city":"roma","address":"avenida roma","id":"b73a44bf-0662-4f97-b99e-f3b558b87d65","country":"italia"}]
+{
+  "message": "Houses found successfully",
+  "info": [
+    {
+      "city": "talca",
+      "address": "avenida apoquindo",
+      "id": "7c2a0d14-71fa-4ae6-bc25-3476add30a30",
+      "country": "chile"
+    },
+    {
+      "city": "iquique",
+      "address": "avenida del mar",
+      "id": "93fa388f-8e64-4baf-8c21-8bae31c75e5f",
+      "country": "chile"
+    },
+    {
+      "city": "roma",
+      "address": "avenida roma",
+      "id": "b73a44bf-0662-4f97-b99e-f3b558b87d65",
+      "country": "italia"
+    }
+  ]
+}
 ```
 
 #### 2. Get a specific house
@@ -51,7 +82,15 @@ curl -X GET "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/houses/
 ```
 Response:
 ```bash
-{"message":"House found successfully","house":{"city":"talca","address":"avenida apoquindo","id":"7c2a0d14-71fa-4ae6-bc25-3476add30a30","country":"chile"}}
+{
+  "message": "House found successfully",
+  "info": {
+    "city": "roma",
+    "address": "avenida roma",
+    "id": "b73a44bf-0662-4f97-b99e-f3b558b87d65",
+    "country": "italia"
+  }
+}
 ```
 
 #### 3. Create a house
@@ -62,11 +101,21 @@ Method: `POST`
 curl -X POST "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/houses/" \
 -H "Content-Type: application/json" \
 -H "Authorization: eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJhYjBlZTkxOS1hN2M0LTRmYmEtOGViNC1hZTFlY2Q1ZmZlODciLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiM2IyYTAwNzMtZDgyZS00NTk2LWI3ZDctY2ZjMGE0YjUyOWQ4IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODI4MTIsImV4cCI6MTczNjc4NjQxMiwiaWF0IjoxNzM2NzgyODEyLCJqdGkiOiJlNWM1NjBjMy1hNzI3LTQ1MGYtOGU2Ni1jYjg4YTFkMWZlMmEiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.oAvBUyGiCCVFPf-A18O2PFMB3e3bx-d-pU3AjxpwFllE7k6hM5BqQFW6IJ1MdDz50MOpwJoVKqtbkh53BvvAnK9cZlL2TolgL-Xt__Y-Au30lCYXAEQqgv29cf885iECsXr4To2rfdoN0WmaOKyVzff4n3qEHB9PHZxcO6EwAPxA7_qHWgcpr5xBYDx4TFXuWElF0wGlxgTV-kohaBIsfBQ-hdHwJkKN65lqXFzT6CvcEjFhR9GfsysjZ75lbEIbA5wAeqXQckGsarGCRoMwfIlVtUgGMpT1YBxknPnp-DPgjo7R52LIPrvxtiTekFbnNIihGuEj0efpD1RVIoXYqQ" \
--d '{"city": "la serena", "address": "avenida la serena", "country": "chile"}'
+-d '{"city": "iquique", "address": "avenida del mar", "country": "chile"}'
 ```
 Response:
 ```bash
-{"city":"la serena","address":"avenida la serena","country":"chile","id":"cf14e73e-0300-4874-bc47-5d3581d7a56f"}
+{
+  "message": "House created successfully",
+  "info": {
+    "house": {
+      "city": "iquique",
+      "address": "avenida del mar",
+      "country": "chile",
+      "id": "03b712f5-6753-4043-afd2-c861fddc6185"
+    }
+  }
+}
 ```
 
 #### 4. Update a house
@@ -77,11 +126,16 @@ Method: `PUT`
 curl -X PUT "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/houses/cf14e73e-0300-4874-bc47-5d3581d7a56f" \
 -H "Content-Type: application/json" \
 -H "Authorization: eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJhYjBlZTkxOS1hN2M0LTRmYmEtOGViNC1hZTFlY2Q1ZmZlODciLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiM2IyYTAwNzMtZDgyZS00NTk2LWI3ZDctY2ZjMGE0YjUyOWQ4IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODI4MTIsImV4cCI6MTczNjc4NjQxMiwiaWF0IjoxNzM2NzgyODEyLCJqdGkiOiJlNWM1NjBjMy1hNzI3LTQ1MGYtOGU2Ni1jYjg4YTFkMWZlMmEiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.oAvBUyGiCCVFPf-A18O2PFMB3e3bx-d-pU3AjxpwFllE7k6hM5BqQFW6IJ1MdDz50MOpwJoVKqtbkh53BvvAnK9cZlL2TolgL-Xt__Y-Au30lCYXAEQqgv29cf885iECsXr4To2rfdoN0WmaOKyVzff4n3qEHB9PHZxcO6EwAPxA7_qHWgcpr5xBYDx4TFXuWElF0wGlxgTV-kohaBIsfBQ-hdHwJkKN65lqXFzT6CvcEjFhR9GfsysjZ75lbEIbA5wAeqXQckGsarGCRoMwfIlVtUgGMpT1YBxknPnp-DPgjo7R52LIPrvxtiTekFbnNIihGuEj0efpD1RVIoXYqQ" \
--d '{"city": "coquimbo"}'
+-d '{"city": "barcelona"}'
 ```
 Response:
 ```bash
-{"message":"House updated successfully","updatedHouse":{"id":"cf14e73e-0300-4874-bc47-5d3581d7a56f","city":"coquimbo"}}
+{
+  "message": "Houses updated successfully",
+  "info": {
+    "city": "barcelona"
+  }
+}
 ```
 
 #### 5. Remove a house
@@ -90,8 +144,11 @@ Method: `DELETE`
 
 ```bash
 curl -X DELETE "https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/houses/cf14e73e-0300-4874-bc47-5d3581d7a56f" \
--H "Authorization: eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJhYjBlZTkxOS1hN2M0LTRmYmEtOGViNC1hZTFlY2Q1ZmZlODciLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiM2IyYTAwNzMtZDgyZS00NTk2LWI3ZDctY2ZjMGE0YjUyOWQ4IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODI4MTIsImV4cCI6MTczNjc4NjQxMiwiaWF0IjoxNzM2NzgyODEyLCJqdGkiOiJlNWM1NjBjMy1hNzI3LTQ1MGYtOGU2Ni1jYjg4YTFkMWZlMmEiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.oAvBUyGiCCVFPf-A18O2PFMB3e3bx-d-pU3AjxpwFllE7k6hM5BqQFW6IJ1MdDz50MOpwJoVKqtbkh53BvvAnK9cZlL2TolgL-Xt__Y-Au30lCYXAEQqgv29cf885iECsXr4To2rfdoN0WmaOKyVzff4n3qEHB9PHZxcO6EwAPxA7_qHWgcpr5xBYDx4TFXuWElF0wGlxgTV-kohaBIsfBQ-hdHwJkKN65lqXFzT6CvcEjFhR9GfsysjZ75lbEIbA5wAeqXQckGsarGCRoMwfIlVtUgGMpT1YBxknPnp-DPgjo7R52LIPrvxtiTekFbnNIihGuEj0efpD1RVIoXYqQ"
+-H "Authorization: eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiJkODEyODdmNC01OWQ1LTQzOWUtOTRjOS05MzZjNjk3MDkwYTciLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiOWJlYTZkYzItZDU1OC00MTEzLTkyYmItNzQ4YWQ3MTZlMzk3IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY3ODYzNjAsImV4cCI6MTczNjc4OTk2MCwiaWF0IjoxNzM2Nzg2MzYwLCJqdGkiOiJhYmZlNTk4ZC1hZTZmLTRlNjEtOWIyZS00ZWZkMDBjZDZlMGIiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.n7E5rPHweDz0be-InwU2a9V0ENrIMxL1eQ75zQ1GMSR_1T2NFb8lqVJleGkWJZuYrGg4S96zuEBZBg0TmA7MWC7ceduCnN_77L0seZdZurEmNRE4mzm7t8kHECqNQNNsbE-ugLcFs58KcTlZ6iGRPYVir-HsyZR3DLLxp5iNbG-FFJDpYPNxDyXfkypphbp8zgnWpUW276Egb1m7RfLr9s3yMGOhBeZnUivyUmyfePLCqB8O4SVq8jt2PFpdA-A2aupJHfBXT5QT6_j01XW_AkLz4gN6398NMjyo2s9dCn6BhiLAzAKiq668y-OLS2bSx8CCobWZ2RSxyoevBn9CjQ"
 ```
 Response:
 ```bash
+{
+  "message": "House removed successfully"
+}
 ```
