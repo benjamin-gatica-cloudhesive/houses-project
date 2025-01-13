@@ -14,7 +14,7 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 
     const token = getToken(logInResponse)
 
-    return formattedResponse(200, { token })
+    return formattedResponse(200, token)
   } catch (error) {
     if (error instanceof Error) {
       return formattedResponse(500, error.message)

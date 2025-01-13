@@ -15,12 +15,13 @@ import { handler as login } from "../lambdas/auth/handler";
 //   })
 // } as any)
 
-// login({
-//   body: JSON.stringify({
-//     userName: 'pedrito',
-//     password: 'Qwerty1234.'
-//   })
-// } as any)
+login({
+  body: JSON.stringify({
+    userName: 'pedrito',
+    password: 'Qwerty1234.'
+  })
+} as any)
+
 // deleteHouse({
 //   queryStringParameters: {
 //     id: '3918a00f-52c2-44a8-9e8d-6162a326726f'
@@ -37,9 +38,8 @@ import { handler as login } from "../lambdas/auth/handler";
 //     country: 'italia'
 //   })
 // } as any)
-
-getHouseById({
-  pathParameters: {
-    id: '7c2a0d14-71fa-4ae6-bc25-3476add30a30?'
-  }
-} as any)
+// getHouseById({
+//   pathParameters: {
+//     id: '7c2a0d14-71fa-4ae6-bc25-3476add30a30?'
+//   }
+// } as any)

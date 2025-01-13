@@ -27,5 +27,5 @@ export const logIn = async ({ userName, password}: LogInArgs) => {
 }
 
 export const getToken = (logInResponse: InitiateAuthCommandOutput) => {
-  return logInResponse.AuthenticationResult?.IdToken
+  return logInResponse.AuthenticationResult
 }
