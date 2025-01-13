@@ -7,6 +7,7 @@ interface ApiStackProps extends StackProps {
   getAllHousesLambdaIntegration: LambdaIntegration
   createHouseLambdaIntegration: LambdaIntegration
   deleteHouseLambdaIntegration: LambdaIntegration
+  updateHouseLambdaIntegration: LambdaIntegration
   loginIntegration: LambdaIntegration
   userPool: UserPool
 }
@@ -41,6 +42,7 @@ export class ApiStack extends Stack {
     housesResource.addMethod('GET', props.getAllHousesLambdaIntegration, optionsWithAuth)
     housesResource.addMethod('POST', props.createHouseLambdaIntegration, optionsWithAuth)
     housesResource.addMethod('DELETE', props.deleteHouseLambdaIntegration, optionsWithAuth)
+    housesResource.addMethod('PUT', props.updateHouseLambdaIntegration, optionsWithAuth)
     
     const loginResource = api.root.addResource('login', optionsWithCors)
     loginResource.addMethod('POST', props.loginIntegration)

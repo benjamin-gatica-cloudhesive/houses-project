@@ -1,4 +1,4 @@
-import { DeleteItemCommand, DynamoDBClient, PutItemCommand, ScanCommand } from "@aws-sdk/client-dynamodb"
+import { DeleteItemCommand, DynamoDBClient, PutItemCommand, ScanCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb"
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
 
 interface DBOperationsArgs {
@@ -12,6 +12,10 @@ interface createItemArgs extends DBOperationsArgs {
 interface deleteItemArgs extends DBOperationsArgs {
   id: string
 }
+
+interface updateItemArgs extends DBOperationsArgs, deleteItemArgs {
+  item: Record<string, any>
+ }
 
 export const getItems = async (args: DBOperationsArgs) => {
   const { ddbClient } = args
@@ -41,4 +45,40 @@ export const deleteItem = async (args: deleteItemArgs) => {
       'id': { S: id }
     }
   }))
+}
+
+export const updateItem = async (args: updateItemArgs) => {
+  const { ddbClient, id, item } = args
+
+  if (!item || Object.keys(item).length === 0) {
+    throw new Error("No fields provided to update.")
+  }
+
+  const updateExpressionParts: string[] = []
+  const expressionAttributeValues: Record<string, any> = {}
+  const expressionAttributeNames: Record<string, string> = {}
+
+  for (const [key, value] of Object.entries(item)) {
+    const placeholderKey = `#${key}`
+    const placeholderValue = `:${key}`
+
+    updateExpressionParts.push(`${placeholderKey} = ${placeholderValue}`)
+    expressionAttributeValues[placeholderValue] = { S: value.toString() }
+    expressionAttributeNames[placeholderKey] = key
+  }
+
+  const updateExpression = `SET ${updateExpressionParts.join(', ')}`
+
+  const updateResult = await ddbClient.send(new UpdateItemCommand({
+    TableName: process.env.TABLE_NAME,
+    Key: {
+      'id': { S: id }
+    },
+    UpdateExpression: updateExpression,
+    ExpressionAttributeValues: expressionAttributeValues,
+    ExpressionAttributeNames: expressionAttributeNames,
+    ReturnValues: 'UPDATED_NEW'
+  }))
+
+  return updateResult
 }

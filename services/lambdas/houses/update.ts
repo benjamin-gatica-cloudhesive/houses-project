@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda'
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
-import { formattedResponse, getIdFromParameters, isIdInParameters } from '../../utils/utils'
-import { deleteItem } from '../../db/operations'
+import { formattedResponse, getBodyFromEvent, getIdFromParameters, isIdInParameters } from '../../utils/utils'
+import { updateItem } from '../../db/operations'
 
 const ddbClient = new DynamoDBClient()
 
@@ -13,19 +13,28 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 
     const id = getIdFromParameters(event)!
 
-    await deleteItem({
+    const house = getBodyFromEvent(event)
+
+    const updatedHouse = await updateItem({
       ddbClient,
-      id
+      id,
+      item: house
     })
 
-    return formattedResponse(204, 'House removed successfully')
+    return formattedResponse(202, {
+      message: 'House updated successfully',
+      updatedHouse: {
+        id,
+        ...house
+      }
+    })
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message)
       return formattedResponse(500, error.message)
     }
 
-    return formattedResponse(500, 'Error trying to store house')
+    return formattedResponse(500, 'Error trying to update house')
   }
 }
 

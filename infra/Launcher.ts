@@ -20,6 +20,7 @@ new ApiStack(app, 'HousesApiStack', {
   createHouseLambdaIntegration: lambdaStack.createHouseLambdaIntegration,
   getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration,
   deleteHouseLambdaIntegration: lambdaStack.deleteHouseLambdaIntegration,
+  updateHouseLambdaIntegration: lambdaStack.updateHouseLambdaIntegration,
   loginIntegration: lambdaStack.loginIntegration,
   userPool: authStack.userPool
 })
