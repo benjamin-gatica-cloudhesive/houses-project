@@ -1,0 +1,49 @@
+import { APIGatewayProxyEvent } from "aws-lambda"
+import { handler } from "./handler"
+import { logIn } from "../../utils/cognitoUtils"
+import { InitiateAuthCommandOutput } from "@aws-sdk/client-cognito-identity-provider"
+
+jest.mock('../../utils/cognitoUtils', () => ({
+  ...jest.requireActual('../../utils/cognitoUtils'),
+  logIn: jest.fn()
+}))
+
+const logInResponse = {
+  AuthenticationResult: {
+    AccessToken: "eyJraWQiOiJ6NTZoaE5LM2pLUTE5c0FGd0lnaGk4a1hyN2NcLzE5aE5ZUjdvUUxMNFp3WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjbGllbnRfaWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsIm9yaWdpbl9qdGkiOiI0MzFjNTBjOC1jY2NlLTRlNzUtYjVmZC03NTI3YTgyYTY3ZGMiLCJldmVudF9pZCI6ImQ3YTI3ZDg2LTVjNzItNDFkOC1hNGM1LThjNTdlNjgzZmJkOSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYXdzLmNvZ25pdG8uc2lnbmluLnVzZXIuYWRtaW4iLCJhdXRoX3RpbWUiOjE3MzY4MDExNTAsImV4cCI6MTczNjgwNDc1MCwiaWF0IjoxNzM2ODAxMTUwLCJqdGkiOiJkYjM5YjgyOC1lNjQ2LTRhMGQtODVhZC02ZDQ5N2ExODkzZGMiLCJ1c2VybmFtZSI6InBlZHJpdG8ifQ.fd54N6U2SmbsnyzOTa7WnmIPCBoEy-Yf_2SdWvc6q9NNPnhmIBa8Ar1_olk_R_ssSDAJmnB1zucCZ0NKEbyqVyk_acqi2fgGnUDB27-zreOLTic80MpJB-K2WjxxG6EcLL-JywHbIaN3w25zdGDbPULBqUrgHm_K4fS48PdfRFN1M1YO31KA6uMU3xZ2hCCR12AsZh08phQd7-ZsPK_vRlhqHcCjUpsZrYoJe0AQz1770GO0Gw599ZCJsdBmxMuJtoePUWp1q8DiQM9Kb61bLkPEd5gIId8CfaWc2QYGYGwzQStVDMoIOiMM6v0OtyNgcU-o4rTmgk0dR_R4FEYQmw",
+    ExpiresIn: 3600,
+    IdToken: "eyJraWQiOiJhVHRYVkRCWGJlSzlcL1dseVwvSERZMnBwbnJic1N2NW43WVF1UHVmM0pHa2M9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzNGQ4NDQzOC0xMGQxLTcwYTUtOWVkMy1hY2I2MDk5NWVhNGEiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV9pSEVaek15aWIiLCJjb2duaXRvOnVzZXJuYW1lIjoicGVkcml0byIsIm9yaWdpbl9qdGkiOiI0MzFjNTBjOC1jY2NlLTRlNzUtYjVmZC03NTI3YTgyYTY3ZGMiLCJhdWQiOiIxOG5nOXU0M2dlMGtiNHJua2lnaGpyZWF0ZCIsImV2ZW50X2lkIjoiZDdhMjdkODYtNWM3Mi00MWQ4LWE0YzUtOGM1N2U2ODNmYmQ5IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3MzY4MDExNTAsImV4cCI6MTczNjgwNDc1MCwiaWF0IjoxNzM2ODAxMTUwLCJqdGkiOiI3N2U1YjZkOC0zNzQ5LTRjZjctYTQ3My0wN2M4YmNlZjY0NDgiLCJlbWFpbCI6InBlZHJpdG9AZ21haWwuY29tIn0.EGxJw8cFEUyB8H6y-_WWbwa3dyZd9e3jf2zdTz-IzG_Lj-33jBHkaSbxgohZjbFh8zdvErwwdvB2-tvHv9Tde0Psu4-_GUZMuv6q9AG1eRV6G3Z3NMtCYqeYZEAttqPuzJzxPtxG5mkQnTlqAtL5McjPbwzdnhgyb2b8ywsHixqJ5hLbgWH0eVMI4N5jhKkljYVc6s1aAMpmtTwCr1UE0nMgb_kSt21Yob6E5ouApk0zQD1PlHB33ePxHC0vKq5gHtjPlw9EUCKcn4VjmV49YdsYLyKicw28a_wT2fvd2O_18d_ICjZyRwhK_bheRjV_bxn0bkUs4GdCIwjAi7x7eg",
+    RefreshToken: "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.eX93xSQiGkTY1J5ZsBOspphE1xziCShh5H5po6AGDgN8mqF8-Rv59sEeH3xyR_rc2_VtXpg1RyioH2IKERX79uPOKKPW46jR4USFmTYUQAbBLpZA46T1JLNIAxFiMdcmvswzmZ_9dE9RFybqUxJvN5z3Rr9DQisufvd6AHWk67D3q3BoIaZAKyQqKcL30znepFIIlUR9o7Ojbx2ESea5K38CmlIaynFXKWrlR1XK0uX4VuYX11kfI3uoDAegs4bXBCjZO0X8SP7KtQgEHS8gMyhH8Xl4tWNHpPCV6MzJz59FWLGOPFL26vmQ0L4uw11gnLn96xjEcvW7TiyLD5MNHg.eC_IzYl3sB_kGosp.asMu-OlmGOBO2wveTlsHEhO_whrWpi0jOJwVZwhGNJB0TEowjNmb7Yg-JTdhJh_GiMqOlmx5uciMuJu4DO6gY3trQ8Ur2Cq3_YUp3db2Af158tAR12KGy305SrUQwH_cA7TQigwzeZbMHzgAnaSFCIGSbQQvHZ8xXovskwcb7NhVoTgXHJILL_nhu_4zInCfek8jNFMeuHDKAxWP3fl8HU_cJwx97SlpjiDKOS172lVgZQrhwICc0VpG7a3yjpXJPhmPhTjUIlOmOv94J208bZ4jLAnWCWCgmXKmcuvT1VGeNTzE-ntKoDvaFo5H6Db9jNedCPwNXG5dXD6mU4FIi7CFvmqwkcNT4WnT6EJcNClPnQqmxMtMx2jWEr7j9YCYvViV-GdzziOQEO74VOWLXCpV-WtDNgKg6nizPpvVKBeQrftiG0tXbmttmYmP5XXpJxHNRVT9eCakz3ngLy8xD2J95fJNNVimOAiqe3d05cBA0MEDG9CW1lBxWPmUy3t7227KgMes65QSBvzsWo80duUHBEUAEsFdlYYHPoTy3Tys2ej2DhaHFvShAsfvOStxBYeCWOlS03_cFuSqswy8LE0CgoXfcWyqII88aipsRMCN8NT2FQ_WM2xPwEdNUBcA8WgniwW-xZgBTvbdF-iMUtmX9R7Nqp4N4CVVZAgqpng8jAJCI5bjpzdlDs4U3vE6cWyW9HCmY81z1gHf13i7UhB6DDIhZayp2gFcBQ6XwHe6L4Dp44fqiie8QDg4VmWQC1f7e41KvLaBF8nX4Rivy2jYrXUI_3z0SiLBBj0kIfxTAp9HbjVHLJZ_-IIgYH2mTh3K0yXynb2BU9HnzmgaBpbt_NBBpB2s0lRFVeAl_HAEl5YwenK90B4vmMqBxSVOvzMeXHyBPMWJ1XZnAGOJVG3wthK9v2JRI-aLALYPGIFlSyDi8VzGsxlrinoq3hlY44_WrgscXcmIUAg8L7G1ozge25jVEbwzK3Sg3mGg7vR9QU2lR103ll8ACxtcXkyfNRDxOjc7LtK5ta0Iz1M33IT0_QNVtpryFLd1n3w704b7m8wV6SpIWXM4REWM1igETGH7BOPXJwUTIQDYwdPGvSIBV_wTB1mtfWkDp69SldV5aHr0EiJyaVQVcg5rr46dzNRnpA_ToHzKQIqd0WEdYJkn8Ba4dvw_VkCTVM0tcql77_jXJM-8Kv6LqKbjEixZ_eDiuWcf3K8Chj8Z3rXI3WR2ngOpQ9wlzpk1aZpIFWHf6sIqZpXTQniT132MbaiehNCbhEtR.QeE14zPCjpRd4M3mBRqUkA",
+    TokenType: "Bearer",
+  }
+} as InitiateAuthCommandOutput
+
+const event = {
+  body: JSON.stringify({
+    userName: 'jose',
+    password: 'Qwerty1234.'
+  })
+}
+
+describe('login lambda function tests', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
+  it('should log in and return the token info', async () => {
+    (logIn as jest.Mock).mockReturnValueOnce(logInResponse)
+
+    const result = await handler(event as APIGatewayProxyEvent)
+
+    expect(result.statusCode).toBe(200)
+    expect(JSON.parse(result.body).message).toBe('Token obtained successfully')
+  })
+
+  it('should return an error message', async () => {
+    (logIn as jest.Mock).mockRejectedValue(new Error('Cognito exception'))
+    const result = await handler(event as APIGatewayProxyEvent)
+
+    expect(result.statusCode).toBe(500)
+    expect(result.body).not.toBeNull()
+  })
+})
