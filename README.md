@@ -2,6 +2,11 @@
 
 This file provides examples of how to make requests to the API using `cURL`. Make sure to replace the authorization token with a valid one before executing the requests
 
+## Execute tests
+```bash
+npm run test
+```
+
 ## Endpoints
 
 Base URL: `https://w9paej22ka.execute-api.us-east-1.amazonaws.com/prod/`
