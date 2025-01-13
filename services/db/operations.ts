@@ -1,4 +1,4 @@
-import { DeleteItemCommand, DynamoDBClient, PutItemCommand, ScanCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb"
+import { DeleteItemCommand, DynamoDBClient, GetItemCommand, PutItemCommand, ScanCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb"
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb"
 
 interface DBOperationsArgs {
@@ -15,7 +15,9 @@ interface deleteItemArgs extends DBOperationsArgs {
 
 interface updateItemArgs extends DBOperationsArgs, deleteItemArgs {
   item: Record<string, any>
- }
+}
+
+interface getItemByIdArgs extends deleteItemArgs {}
 
 export const getItems = async (args: DBOperationsArgs) => {
   const { ddbClient } = args
@@ -25,6 +27,23 @@ export const getItems = async (args: DBOperationsArgs) => {
   }))
 
   return result.Items?.map(item => unmarshall(item))
+}
+
+export const getItemById = async (args: getItemByIdArgs) => {
+  const { ddbClient, id } = args
+
+  const getItemResponse = await ddbClient.send(new GetItemCommand({
+    TableName: process.env.TABLE_NAME,
+    Key: {
+      'id': {
+        S: id
+      }
+    }
+  }))
+
+  if (!getItemResponse.Item) return false
+
+  return unmarshall(getItemResponse.Item!)
 }
 
 export const createItem = async (args: createItemArgs) => {

@@ -15,6 +15,7 @@ interface LambdaStackProps extends StackProps {
 
 export class LambdaStack extends Stack {
   public readonly getAllHousesLambdaIntegration: LambdaIntegration
+  public readonly getHouseLambdaIntegration: LambdaIntegration
   public readonly createHouseLambdaIntegration: LambdaIntegration
   public readonly deleteHouseLambdaIntegration: LambdaIntegration
   public readonly updateHouseLambdaIntegration: LambdaIntegration
@@ -40,6 +41,24 @@ export class LambdaStack extends Stack {
     }))
 
     this.getAllHousesLambdaIntegration = new LambdaIntegration(getAllHouses)
+
+    const getHouse = new NodejsFunction(this, 'GetHouse', {
+      runtime: Runtime.NODEJS_22_X,
+      handler: 'handler',
+      entry: (join(__dirname, '..','..', 'services', 'lambdas', 'houses', 'get.ts')),
+      environment: {
+        TABLE_NAME: props.housesTable.tableName
+      },
+    })
+
+    getHouse.addToRolePolicy(new PolicyStatement({
+      resources: [props.housesTable.tableArn],
+      actions: [
+        'dynamodb:GetItem'
+      ]
+    }))
+
+    this.getHouseLambdaIntegration = new LambdaIntegration(getHouse)
 
     const createHouse = new NodejsFunction(this, 'CreateHouse', {
       runtime: Runtime.NODEJS_22_X,

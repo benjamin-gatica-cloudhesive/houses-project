@@ -18,6 +18,7 @@ const lambdaStack = new LambdaStack(app, 'HousesLambdaStack', {
 
 new ApiStack(app, 'HousesApiStack', {
   createHouseLambdaIntegration: lambdaStack.createHouseLambdaIntegration,
+  getHouseLambdaIntegration: lambdaStack.getHouseLambdaIntegration,
   getAllHousesLambdaIntegration: lambdaStack.getAllHousesLambdaIntegration,
   deleteHouseLambdaIntegration: lambdaStack.deleteHouseLambdaIntegration,
   updateHouseLambdaIntegration: lambdaStack.updateHouseLambdaIntegration,

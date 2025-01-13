@@ -5,6 +5,7 @@ import { Construct } from "constructs";
 
 interface ApiStackProps extends StackProps {
   getAllHousesLambdaIntegration: LambdaIntegration
+  getHouseLambdaIntegration: LambdaIntegration
   createHouseLambdaIntegration: LambdaIntegration
   deleteHouseLambdaIntegration: LambdaIntegration
   updateHouseLambdaIntegration: LambdaIntegration
@@ -45,6 +46,7 @@ export class ApiStack extends Stack {
     const housesByIdResource = housesResource.addResource('{id}', optionsWithCors)
     housesByIdResource.addMethod('DELETE', props.deleteHouseLambdaIntegration, optionsWithAuth)
     housesByIdResource.addMethod('PUT', props.updateHouseLambdaIntegration, optionsWithAuth)
+    housesByIdResource.addMethod('GET', props.getHouseLambdaIntegration, optionsWithAuth)
     
     const loginResource = api.root.addResource('login', optionsWithCors)
     loginResource.addMethod('POST', props.loginIntegration)
