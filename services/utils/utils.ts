@@ -47,11 +47,11 @@ export const validateStructureLoginCredentials = (credentials: any) => {
 }
 
 export const isIdInParameters = (event: APIGatewayProxyEvent) => {
-  if (!event.queryStringParameters) {
+  if (!event.pathParameters) {
     return false
   }
 
-  if (!event.queryStringParameters?.id) {
+  if (!event.pathParameters?.id) {
     return false
   }
 
@@ -59,5 +59,5 @@ export const isIdInParameters = (event: APIGatewayProxyEvent) => {
 }
 
 export const getIdFromParameters = (event: APIGatewayProxyEvent) => {
-  return event.queryStringParameters?.id
+  return event.pathParameters?.id
 }

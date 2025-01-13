@@ -15,7 +15,7 @@ async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResu
 
     const house = getBodyFromEvent(event)
 
-    const updatedHouse = await updateItem({
+    await updateItem({
       ddbClient,
       id,
       item: house

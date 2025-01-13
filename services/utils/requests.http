@@ -24,14 +24,14 @@ Authorization: {{token}}
 }
 
 ###
-DELETE {{url}}houses?id=3918a00f-52c2-44a8-9e8d-6162a326726f HTTP/1.1
+DELETE {{url}}houses/9d81118c-a3c9-477f-bf96-cfca1bfdab4d HTTP/1.1
 Authorization: {{token}}
 
 ###
-PUT {{url}}houses?id=newId HTTP/1.1
+PUT {{url}}houses/9d81118c-a3c9-477f-bf96-cfca1bfdab4d HTTP/1.1
 Content-Type: application/json
 Authorization: {{token}}
 
 {
-  "city": "sebita"
+  "city": "barcelona"
 }
