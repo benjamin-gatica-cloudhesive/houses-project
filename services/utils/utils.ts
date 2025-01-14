@@ -9,7 +9,11 @@ interface ResponseBody {
 export const formattedResponse = (statusCode: number, body: ResponseBody) => {
   return {
     statusCode,
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*'
+    }
   }
 }
 
